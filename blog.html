@@ -1,0 +1,17 @@
+---
+layout: default
+title: Blog
+---
+<article class="uk-article">
+    <h1>Latest Posts</h1>
+        {% for post in site.posts %}
+            <h1 class="uk-article-title"><a class="uk-link-reset" href="{{ post.url }}">{{ post.title }}</a></h1>
+            <p class="uk-text-lead">{{ post.excerpt }}</p>
+            <div class="uk-grid-small uk-child-width-auto" uk-grid>
+                <div>
+                    <a class="uk-button uk-button-text" href="{{ post.url }}">Read more</a>
+                </div>
+            </div>
+      {% endfor %}
+</article>
+
