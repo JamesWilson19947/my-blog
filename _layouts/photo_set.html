@@ -1,0 +1,54 @@
+---
+layout: default
+---
+
+
+<div>
+  <a href="{{ site.baseurl }}/photos/">← View All Photo Sets</a>
+</div>
+
+{% assign num = page.photos.size %}
+
+    <div class="container mx-auto px-4">        
+      <section class="py-8 px-4">
+        <div class="flex flex-wrap -mx-4">
+          <div class="md:w-auto h-auto px-4">
+          	{% for i in (1..num) %}
+          	{% assign image_path = "assets/images" | append:page.permalink | append:i | append:".jpg" %}
+            <div class="bg-white border-5 border-gray-300 p-6 rounded-md shadow-lg">
+              <div id="header" class="flex items-center mb-4"> 
+                  <a href="/{{ image_path }}"><div class="mb-8"><img class="rounded shadow-md" src="/{{ image_path }}" alt=""></div></a>
+              </div>
+                <div class="grid grid-cols-5 gap-6">
+                 <div>
+                    <center>
+                      <span class="iconify" data-icon="ant-design:camera-filled" data-inline="false" alt="Camra Make"></span>{{ image_path | exif: 'model'}}
+                    </center>
+                  </div>
+                  <div>
+                    <center>
+                      <span class="iconify" data-icon="ic:outline-shutter-speed" data-inline="false"></span>{{ image_path | exif: 'exposure_time.to_s'}} 
+                    </center>
+                  </div>
+                  <div>
+                    <center> 
+                      <span class="iconify" data-icon="oi-aperture" data-inline="true"></span>F/{{ image_path | exif: 'f_number.to_f'}}
+                    </center>
+                  </div>
+                  <div>
+                    <center> 
+                      <span class="iconify" data-icon="codicon:device-camera-video" data-inline="true"></span>{{ image_path | exif: 'focal_length_in_35mm_film'}}mm
+                    </center>
+                  </div>
+                  <div>
+                    <center> 
+                      <span class="iconify" data-icon="carbon:iso-filled" data-inline="true"></span>{{ image_path | exif: 'iso_speed_ratings'}}
+                    </center>
+                  </div>
+                </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </section>
+    </div>

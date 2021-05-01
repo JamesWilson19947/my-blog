@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: default-no-header
 ---
 
 <article class="l:divide-y xl:divide-gray-200">
@@ -8,7 +8,7 @@ layout: default
 			<dl class="space-y-10"><div>
 				<dt class="sr-only">Published on</dt>
 				<dd class="text-base leading-6 font-medium text-gray-500">
-					<time datetime>{{ page.date | date_to_string }}</time>
+					<time datetime>{{ page.date | date: "%A, %B %-d %Y" }}</time>
 				</dd>
 			</div>
 		</dl>
