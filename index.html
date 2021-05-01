@@ -1,13 +1,66 @@
 ---
-layout: home
+layout: default-no-header
 title: Home
 ---
+<div class="divide-y divide-gray-200">
+    <div class="pt-6 pb-8 space-y-2 md:space-y-5">
+        <h1 class="text-3xl leading-9 font-extrabold text-gray-900 tracking-tight sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">Latest</h1>
+        <p class="text-lg leading-7 text-gray-500">From the head of James to the interwebs.</p>
+    </div>
 
-        <div class="uk-cover-container uk-light">
-            <canvas width="auto" height="1000px"></canvas>
-            <iframe src="https://www.youtube-nocookie.com/embed/OksXZ7rq6OU?autoplay=1&amp;controls=0&amp;showinfo=0&amp;rel=0&amp;loop=1&amp;modestbranding=1&amp;wmode=transparent&amp;playsinline=1" width="1920" height="1080" frameborder="0" allowfullscreen uk-cover></iframe>
-            <div class="uk-position-cover uk-flex uk-flex-center uk-flex-middle">
-                <h1>Heading</h1>
-            </div>
-        </div>
+    <ul class="divide-y divide-gray-200">
+        {% for post in paginator.posts %}
+        <li class="py-12">
+            <article class="space-y-2 xl:grid xl:grid-cols-4 xl:space-y-0 xl:items-baseline">
+                <dl>
+                	<dt class="sr-only">Published on</dt>
+                    <dd class="text-base leading-6 font-medium text-gray-500">
+                    	<time datetime>{{ post.date | date_to_string }}</time>
+                	</dd>
+                	<dd class="text-base leading-6 font-light text-gray-700">
+                    	{{ post.content | reading_time_as_i }} to read
+                	</dd>
+           		 </dl>
 
+                    <div class="space-y-5 xl:col-span-3"><div class="space-y-6">
+                        <h2 class="text-2xl leading-8 font-bold tracking-tight">
+                            <a class="text-gray-900" href="{{ post.url }}">{{ post.title }}</a></h2>
+                            <div class="prose max-w-none text-gray-500">
+                                {{ post.excerpt }}
+                            </div>
+                        </div>
+                        <div class="text-base leading-6 font-medium">
+                            <a class="text-teal-500 hover:text-teal-600" aria-label="{{ post.title }}" href="{{ post.url }}">Read more →</a>
+                        </div>
+                    </div>
+            </article>
+        </li>
+        {% endfor %}
+    </ul>
+
+{% if paginator.total_pages > 1 %}
+<ul class="flex list-reset border border-grey-light rounded w-auto font-sans">
+  {% if paginator.previous_page %}
+  	<li><a class="block hover:text-blue hover:bg-blue text-blue border-r border-grey-light px-3 py-2" href="{{ paginator.previous_page_path | relative_url }}">Prev</a></li>
+  {% else %}
+    <li><a class="block hover:text-blue hover:bg-blue text-blue border-r border-grey-light px-3 py-2" href="{{ paginator.previous_page_path | relative_url }}">Prev</a></li>
+  {% endif %}
+
+  {% for page in (1..paginator.total_pages) %}
+    {% if page == paginator.page %}
+    	<li><a class="block hover:text-blue hover:bg-blue text-blue border-r border-grey-light px-3 py-2" href="">{{ page }}</a></li>
+    {% elsif page == 1 %}
+    	<li><a class="block hover:text-blue hover:bg-blue text-blue border-r border-grey-light px-3 py-2" href="{{ '/' | relative_url }}">{{ page }}</a></li>
+    {% else %}
+    	<li><a class="block hover:text-blue hover:bg-blue text-blue border-r border-grey-light px-3 py-2" href="{{ site.paginate_path | relative_url | replace: ':num', page }}">{{ page }}</a></li>
+    {% endif %}
+  {% endfor %}
+
+  {% if paginator.next_page %}
+  	<li><a class="block hover:text-blue hover:bg-blue text-blue border-r border-grey-light px-3 py-2" href="{{ paginator.next_page_path | relative_url }}">Next</a></li>
+  {% else %}
+    <li><p class="block hover:text-blue hover:bg-blue text-blue border-r border-grey-light px-3 py-2" href="{{ paginator.next_page_path | relative_url }}">Next</a></li>
+  {% endif %}
+</ul>
+{% endif %}
+</ul>

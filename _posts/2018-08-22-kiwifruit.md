@@ -1,6 +1,6 @@
 ---
 layout: post
-author: ted
+author: James Wilson
 ---
 <div class="uk-height-small uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light"
      data-src="https://images.unsplash.com/photo-1610917040803-1fccf9623064?fit=crop&w=650&h=433&q=80"
