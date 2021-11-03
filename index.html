@@ -2,65 +2,61 @@
 layout: default-no-header
 title: Home
 ---
-<div class="divide-y divide-gray-200">
-    <div class="pt-6 pb-8 space-y-2 md:space-y-5">
-        <h1 class="text-3xl leading-9 font-extrabold text-gray-900 tracking-tight sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">Latest</h1>
-        <p class="text-lg leading-7 text-gray-500">From the head of James to the interwebs.</p>
-    </div>
-
-    <ul class="divide-y divide-gray-200">
-        {% for post in paginator.posts %}
-        <li class="py-12">
-            <article class="space-y-2 xl:grid xl:grid-cols-4 xl:space-y-0 xl:items-baseline">
-                <dl>
-                	<dt class="sr-only">Published on</dt>
-                    <dd class="text-base leading-6 font-medium text-gray-500">
-                    	<time datetime>{{ post.date | date_to_string }}</time>
-                	</dd>
-                	<dd class="text-base leading-6 font-light text-gray-700">
-                    	{{ post.content | reading_time_as_i }} to read
-                	</dd>
-           		 </dl>
-
-                    <div class="space-y-5 xl:col-span-3"><div class="space-y-6">
-                        <h2 class="text-2xl leading-8 font-bold tracking-tight">
-                            <a class="text-gray-900" href="{{ post.url }}">{{ post.title }}</a></h2>
-                            <div class="prose max-w-none text-gray-500">
-                                {{ post.excerpt }}
-                            </div>
-                        </div>
-                        <div class="text-base leading-6 font-medium">
-                            <a class="text-teal-500 hover:text-teal-600" aria-label="{{ post.title }}" href="{{ post.url }}">Read more →</a>
-                        </div>
-                    </div>
-            </article>
-        </li>
-        {% endfor %}
-    </ul>
-
-{% if paginator.total_pages > 1 %}
-<ul class="flex list-reset border border-grey-light rounded w-auto font-sans">
-  {% if paginator.previous_page %}
-  	<li><a class="block hover:text-blue hover:bg-blue text-blue border-r border-grey-light px-3 py-2" href="{{ paginator.previous_page_path | relative_url }}">Prev</a></li>
-  {% else %}
-    <li><a class="block hover:text-blue hover:bg-blue text-blue border-r border-grey-light px-3 py-2" href="{{ paginator.previous_page_path | relative_url }}">Prev</a></li>
-  {% endif %}
-
-  {% for page in (1..paginator.total_pages) %}
-    {% if page == paginator.page %}
-    	<li><a class="block hover:text-blue hover:bg-blue text-blue border-r border-grey-light px-3 py-2" href="">{{ page }}</a></li>
-    {% elsif page == 1 %}
-    	<li><a class="block hover:text-blue hover:bg-blue text-blue border-r border-grey-light px-3 py-2" href="{{ '/' | relative_url }}">{{ page }}</a></li>
-    {% else %}
-    	<li><a class="block hover:text-blue hover:bg-blue text-blue border-r border-grey-light px-3 py-2" href="{{ site.paginate_path | relative_url | replace: ':num', page }}">{{ page }}</a></li>
-    {% endif %}
-  {% endfor %}
-
-  {% if paginator.next_page %}
-  	<li><a class="block hover:text-blue hover:bg-blue text-blue border-r border-grey-light px-3 py-2" href="{{ paginator.next_page_path | relative_url }}">Next</a></li>
-  {% else %}
-    <li><p class="block hover:text-blue hover:bg-blue text-blue border-r border-grey-light px-3 py-2" href="{{ paginator.next_page_path | relative_url }}">Next</a></li>
-  {% endif %}
-</ul>
-{% endif %}
-</ul>
+<div class="mx-auto bg-white dark:bg-gray-900 ">
+	<main role="main">
+	   <div class="mb-10 flex items-center bg-white justify-center ">
+	      <section class="flex flex-wrap justify-center">
+	         <div class="flex items-center justify-center w-full md:w-1/3">
+	            <img class="rounded-full" src="/assets/images/me.png">
+	         </div>
+	         <div class="flex items-center mt-6 md:w-2/3 md:mt-0 md:pl-3 lg:pl-6">
+	            <div class="flex flex-col items-center text-primary dark:text-secondary md:items-start">
+	               <h1 class="mb-3 text-xl text-center text-gray-800 font-body md:text-2xl lg:text-2_5xl dark:text-secondary_light">
+	                  Hey 👋! I'm <span class="font-bold">James Wilson</span>
+	               </h1>
+	               <h2 class="mb-4 font-bold leading-tight text-center text-2_5xl md:text-left sm:text-3xl md:text-4xl lg:text-5xl">
+	                  Linux Guru  &amp; Devops Engineer
+	               </h2>
+	               <h3 class="w-full mb-6 text-xl text-center text-gray-800 font-body md:text-1xl lg:text-2xl dark:text-gray-100 md:text-left md:max-w-md lg:max-w-xl">
+	                  I love anything to do with Linux. I love coding in PHP &amp; Python. I love problem solving.
+	               </h3>
+	               <center>
+	               <div class="flex flex-row items-center">
+	                   <a href="mailto:me@jamesphilipwilson.co.uk"><button class=" bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">Get in touch</button></a>
+	                  <a href="https://www.linkedin.com/in/jpwilson/"><button class="ml-2 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">Connect with me</button></a>
+	               </div>
+	            </div>
+	      </section>
+	      </div>
+	      <div class="mb-24">
+	         <div class="flex flex-col mb-24 lg:-mx-6 lg:flex-row">
+	            <div class="w-2/3 mx-auto mb-18 text-center sm:w-2/3 lg:mb-0 lg:mx-6 lg:w-1/3 lg:w-full">
+	               <center><img src="/assets/images/code.svg" width="30%"></center>
+	               <h3 class="mb-2 text-2xl font-semibold lg:text-3xl font-header text-primary dark:text-secondary">I'm addicted to code</h3>
+	               <p class="text-xl md:text-2xl">I have over <b>5 years</b> experience with PHP. I also know Python, Bash and I'm learning Go.</p>
+	            </div>
+	            <div class="w-2/3 mx-auto mb-10 text-center sm:w-2/3 lg:mb-0 lg:mx-6 lg:w-1/3 lg:w-full">
+	               <center><img class="mb-2 mt-10" src="/assets/images/aws.svg" width="30%"></center>
+	               <h3 class="mb-2 text-2xl font-semibold lg:text-3xl font-header text-primary dark:text-secondary">Amazon Web Services</h3>
+	               <p class="text-xl md:text-2xl">I have over <b>2 years</b> experience with Amazon Web Services, I am currently studying for the certifications.</p>
+	            </div>
+	            <div class="w-2/3 mx-6 mx-auto mb-0 text-center lg:mx-6 sm:w-2/3 lg:w-1/3 lg:w-full">
+	               <center><img src="/assets/images/linux.svg" width="30%"></center>
+	               <h3 class="mb-2 text-2xl font-semibold lg:text-3xl font-header text-primary dark:text-secondary">Linux</h3>
+	               <p class="text-xl md:text-2xl">I have over <b>9 years</b> experience with linux. I always joke, that wherever I am, I've probably got a Linux prompt open.</p>
+	            </div>
+	         </div>
+	         <h3 class="mb-8 text-x2 font-bold text-center uppercase md:text-2xl ">Other parts of my tech stack</h3>
+	         <div class="flex flex-wrap justify-center mx-auto lg:max-w-3xl">
+	            <div class="flex p-4 md:p-8"><span data-tip="PHP" ><img src="/assets/images/php.svg" class="w-16 transition duration-500 ease-in-out transform md:w-20 hover:scale-110" alt="PHP"></span></div>
+	            <div class="flex p-4 md:p-8"><span data-tip="Terraform" ><img src="/assets/images/terraform.svg" class="w-16 transition duration-500 ease-in-out transform md:w-20 hover:scale-110" alt="Terraform"></span></div>
+	            <div class="flex p-4 md:p-8"><span data-tip="Python" ><img src="/assets/images/Python.svg" class="w-16 transition duration-500 ease-in-out transform md:w-20 hover:scale-110" alt="Python"></span></div>
+	            <div class="flex p-4 md:p-8"><span data-tip="github" ><img src="/assets/images/github.svg" class="w-16 transition duration-500 ease-in-out transform md:w-20 hover:scale-110" alt="github"></span></div>
+	            <div class="flex p-4 md:p-8"><span data-tip="mysql" ><img src="/assets/images/mysql.svg" class="w-16 transition duration-500 ease-in-out transform md:w-20 hover:scale-110" alt="mysql"></span></div>
+	         </div>
+	         <div class="mx-auto mb-24">
+	            <p class="font-bold leading-snug text-left text-1xl md:text-center sm:text-2xl md:text-3xl lg:text-4xl font-header"></p>
+	         </div>
+	      </div>
+	</main>
+</div>
